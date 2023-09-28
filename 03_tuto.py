@@ -10,7 +10,13 @@ def multiply_and_print_pid(a, b):
     pid = os.getpid()
     print(f"PID {pid}: {a} * {b} = {result}")
     return result
-
+def multiply_and_print_pid2(a, b):
+    import os  # Import os module to access the PID
+    result = a * b
+    sleep(1)
+    pid = os.getpid()
+    print(f"PID {pid}: {a} * {b} = {result}")
+    return result
 if __name__ == "__main__":
     # Create a multiprocessing Pool with 4 processes
     pool = multiprocessing.Pool(processes=4)
@@ -22,7 +28,7 @@ if __name__ == "__main__":
     time = datetime.datetime.now()
     results = [pool.apply_async(multiply_and_print_pid, args=(a, b)) for a, b in arguments]
     print(f"Process starting time: {np.abs((time-datetime.datetime.now()).total_seconds()):5.2f}")
-    
+    results.append(pool.apply_async(multiply_and_print_pid2, args=(0, 1)))
     
     # Close the pool and wait for all tasks to complete
     pool.close()
