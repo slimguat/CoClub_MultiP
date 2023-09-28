@@ -25,7 +25,7 @@ if __name__=='__main__':
       for ind,p in enumerate(processes): 
         if not p.is_alive():
           p.close()
-          processes.pop(p)
+          processes.remove(p)
     
   for p in processes: p.join()
   

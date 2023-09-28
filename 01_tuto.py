@@ -10,7 +10,6 @@ if len(sys.argv)<=1:
 else:Njobs = int(sys.argv[1])
 
 def calculate_square(number):
-    result = number * number
     # print(f"The square of {number} is {result}. PID: {os.getpid()}")
     sleep(1)
     
